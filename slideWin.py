@@ -32,6 +32,18 @@ def f():
         print(f'{r==an}, expect: {an}, get: {r}')
 
 
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        r, s, dic=0, 0, {0:1}
+        for i in nums:
+            s+=i
+            ss=s-k
+            if ss in dic: r+=dic[ss]
+            if s in dic: dic[s]+=1
+            else: dic[s]=1
+        return r
+
+
 
 now=time.time()    
 # for i in range(9900): f()
