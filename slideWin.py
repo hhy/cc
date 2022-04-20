@@ -34,7 +34,7 @@ def f():
 
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        r, s, dic=0, 0, {0:1}
+        r, s, dic=0, 0, {0:1}  # any 
         for i in nums:
             s+=i
             ss=s-k
@@ -42,6 +42,27 @@ class Solution:
             if s in dic: dic[s]+=1
             else: dic[s]=1
         return r
+
+
+class Solution:
+    def shortestSubarray(self, nums: List[int], k: int) -> int:
+        nl=len(nums)
+        ss=[0]
+        for i in range(nl):
+            ss.append(ss[-1]+nums[i])
+        ml=nl+nl            
+        q=deque()
+        for i, v in enumerate(ss):
+            while len(q)>0 and v<=q[-1][0]: q.pop()
+            while len(q)>0:
+                if v-q[0][0]>=k: 
+                    ml=min(ml, i-q[0][1])
+                    if ml==1: return 1
+                    q.popleft()
+                else:
+                    break
+            q.append((v, i))
+        return ml if ml<=nl else -1
 
 
 
