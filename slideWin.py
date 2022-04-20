@@ -34,7 +34,8 @@ def f():
 
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        r, s, dic=0, 0, {0:1}  # any 
+        # dic  x+y = k,  array (a -> b) = sum(b)-sum(a), each b, find num of a that a+b=k
+        r, s, dic=0, 0, {0:1}  
         for i in nums:
             s+=i
             ss=s-k
