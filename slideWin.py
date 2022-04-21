@@ -15,6 +15,13 @@ import time
 
 
 def f():
+    '''
+    given an array of integers nums, there is a sliding window of size k which is moving 
+    from the very left of the array to the very right. 
+    You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+
+    Return the max sliding window.
+    '''
     def maxSlidingWindow(nums: List[int], k: int) -> List[int]:
         q, r=deque(), []
         for i, v in enumerate(nums):
@@ -33,6 +40,9 @@ def f():
 
 
 class Solution:
+    '''
+    Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
+    '''
     def subarraySum(self, nums: List[int], k: int) -> int:
         # dic  x+y = k,  array (a -> b) = sum(b)-sum(a), each b, find num of a that a+b=k
         r, s, dic=0, 0, {0:1}  
@@ -46,6 +56,11 @@ class Solution:
 
 
 class Solution:
+    '''
+    Given an integer array nums and an integer k, 
+    return the length of the shortest non-empty subarray of nums with a sum of at least k.
+    If there is no such subarray, return -1
+    '''
     def shortestSubarray(self, nums: List[int], k: int) -> int:
         nl=len(nums)
         ss=[0]
@@ -66,6 +81,29 @@ class Solution:
         return ml if ml<=nl else -1
 
 
+def f():
+    '''
+    Given an integer array nums and an integer k, return the maximum sum of a non-empty subsequence of that array 
+    such that for every two consecutive integers in the subsequence, nums[i] and nums[j],
+    where i < j, the condition j - i <= k is satisfied
+    '''
+    def fa(nums: List[int], k: int) -> int:
+        # nums[i] = max(0, nums[i - k], nums[i - k + 1], .., nums[i - 1]) + nums[i]
+        # i.e. dp[i] = max(0, dp[i - k], dp[i - k + 1], .., dp[i -1]) + nums[i]
+        q=deque()
+        nl=len(nums)
+        for i in range(nl):
+            j=i-k
+            if q: nums[i]+=nums[q[0]]
+            while q and nums[i]>=nums[q[-1]]: q.pop()
+            while q and q[0]<=j: q.popleft()
+            if nums[i]>0: q.append(i)
+        return max(nums)
+
+    ii=(([10,2,-10,5,20], 2, 37), ( [-1,-2,-3], 1, -1), ([10,-2,-10,-5,20], 2, 23))
+    for ar, k, an in ii:
+        r=fa(ar, k)
+        print(f'{an==r}, expect: {an}, get: {r}')
 
 now=time.time()    
 # for i in range(9900): f()
