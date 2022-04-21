@@ -105,6 +105,31 @@ def f():
         r=fa(ar, k)
         print(f'{an==r}, expect: {an}, get: {r}')
 
+def f():
+    '''
+    nums and an integer limit, return the size of the longest non-empty subarray
+    such that the absolute difference between any two elements of this subarray is less than or equal to limit
+    '''
+    def longestSubarray(nums: List[int], limit: int) -> int:
+        qa, qb=[], []
+        r, m=0, -1
+        for i, v in enumerate(nums):
+            heapq.heappush(qa, (v, -i))
+            heapq.heappush(qb, (-v, -i))
+            if -qa[0][0]-qb[0][0]>limit:
+                m=-max(qa[0][1], qb[0][1])
+                while qa[0][1]>=-m: heapq.heappop(qa)
+                while qb[0][1]>=-m: heapq.heappop(qb)
+            r=max(r, i-m)
+
+        return r
+
+    ii=(([8,2,4,7], 4, 2), ([10,1,2,4,7,2], 5, 4), ([4,2,2,2,4,4,2,2], 0, 3), ([1,1,1,2,3,4], 99, 6))
+    for ar, k, an in ii[:]:
+        r=longestSubarray(ar, k)
+        print(f'{an==r}, expect: {an}, get: {r}')
+        
+
 now=time.time()    
 # for i in range(9900): f()
 f()
