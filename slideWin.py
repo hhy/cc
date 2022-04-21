@@ -233,3 +233,24 @@ now=time.time()
 # for i in range(9900): f()
 f()
 print(f'\n{"="*100}+\ntotal time: {time.time()-now}')
+
+
+class Solution:
+    '''
+    cost of min MST for given an array points representing integer coordinates of some points on a 2D-plane
+    '''
+    def minCostConnectPoints(self, points: List[List[int]]) -> int:
+        lp=len(points)
+        es=[]
+        ps=set([i for i in range(lp)])
+        s=0
+        p=0
+        while True:
+            a, b=points[p]
+            ps.remove(p)
+            if len(ps)==0: return s
+            for j in ps:
+                c, d=points[j]
+                heapq.heappush(es,  (abs(a-c)+abs(b-d), j) )
+            while p not in ps: e, p=heapq.heappop(es)
+            s+=e
