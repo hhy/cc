@@ -132,6 +132,8 @@ def f():
         maxd = deque()
 
         # This is a monotonically increasing double-ended queue.
+
+        
         mind = deque()
 
         i = 0
@@ -192,7 +194,40 @@ def f():
     for ar, k, an in ii[:]:
         r=longestSubarray(ar, k)
         print(f'{an==r}, expect: {an}, get: {r}')
-        
+
+
+class Solution:
+    '''
+    Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
+    There is only one repeated number in nums, return this repeated number.
+    '''
+    def findDuplicate(self, nums: List[int]) -> int:
+ 
+        a, b, c=0, 0, 0
+        while True:
+            a, b=nums[a], nums[nums[b]]
+            if a==b: break
+        while True:
+            a, c=nums[a], nums[c]
+            if a==c: return a
+
+class Solution:
+    '''
+    Given an unsorted integer array nums, return the smallest missing positive integer.
+    '''
+    def firstMissingPositive(self, nums: List[int]) -> int:
+        nl=len(nums)
+        m=nl*4+111
+        for i in range(nl):
+            v=nums[i]
+            if v<1 or v>nl: nums[i]=m
+        for i in range(nl):
+            v=abs(nums[i])
+            if v==m or v==-m: continue
+            nums[v-1]=-abs(nums[v-1])
+        for i, v in enumerate(nums):
+            if v>0: return i+1
+        return nl+1
 
 now=time.time()    
 # for i in range(9900): f()
