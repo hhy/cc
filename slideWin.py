@@ -235,6 +235,7 @@ f()
 print(f'\n{"="*100}+\ntotal time: {time.time()-now}')
 
 
+import math
 class Solution:
     '''
     cost of min MST for given an array points representing integer coordinates of some points on a 2D-plane
@@ -254,3 +255,23 @@ class Solution:
                 heapq.heappush(es,  (abs(a-c)+abs(b-d), j) )
             while p not in ps: e, p=heapq.heappop(es)
             s+=e
+
+    def minCostConnectPoints(self, points: List[List[int]]) -> int:
+        h=[]
+        lp=len(points)
+        dist=[math.inf for x in range(lp)]
+        ps=set([x for x in range(lp)])
+        p=0
+        s=0
+        while True:
+            a, b=points[p]
+            ps.remove(p)
+            if len(ps)==0: return s
+            for x in ps:
+                c,d=points[x]
+                dd=abs(a-c)+abs(b-d)
+                if dd<dist[x]: dist[x]=dd
+            d=math.inf
+            for i in ps:
+                if d>dist[i]: p, d=i, dist[i]
+            s+=d
