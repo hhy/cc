@@ -9,4 +9,5 @@
 
 # Graph
 - [Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/solution/) [(code)](slideWin.py#L199)
+>Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive. There is only one repeated number in nums, return this repeated number.
 - [Given an unsorted integer array nums, return the smallest missing positive integer.](https://leetcode.com/problems/first-missing-positive/)  [(code)](slideWin.py#L214)
