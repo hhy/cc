@@ -315,3 +315,43 @@ def f():
             return max(left, right) + root.val
         dfs(root)
         return res
+
+class Trie:
+
+    def __init__(self):
+        self.dic={}
+
+    def insert(self, word: str) -> None:
+        a=self.dic
+        for c in word:
+            if c not in a: a[c]={}
+            a=a[c]
+        a[1]=1
+
+    def search(self, word: str) -> bool:
+        a=self.dic
+        for c in word:
+            if not c in a: return False
+            a=a[c]
+        return 1 in a
+        
+
+    def startsWith(self, prefix: str) -> bool:
+        a=self.dic
+        for c in prefix:
+            if not c in a: return False
+            a=a[c]
+        return True        
+
+
+class Solution:
+    '''
+    Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+    '''
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        wordDict=set(wordDict)
+        ml=max(len(x) for x in wordDict)
+        r=[True]
+        for i in range(1, len(s)+1):
+            r+= any(r[j] and s[j:i] in wordDict for j in range(max(0, i-ml), i)),
+        return r[-1]

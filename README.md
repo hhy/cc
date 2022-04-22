@@ -27,3 +27,7 @@
 # Basic
 - [heapify](https://github.com/python/cpython/blob/main/Lib/heapq.py)
 
+# String
+
+- [word breakable by dict](https://leetcode.com/problems/word-break/) [(code)](slideWin.py#L347)
+
