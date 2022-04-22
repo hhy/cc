@@ -275,3 +275,23 @@ class Solution:
             for i in ps:
                 if d>dist[i]: p, d=i, dist[i]
             s+=d
+
+
+class Solution:
+    '''
+    Construct Binary Tree from Preorder and Inorder Traversal
+    '''
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        nl=len(preorder)
+        dic={ v:i for i, v in enumerate(inorder)}
+        
+        def h(a=0, b=nl, c=0):
+            if a>=b: return None
+            v=preorder[a]
+            r=TreeNode(v)
+            siz=dic[v]-c
+            r.left=h(a+1, a+siz+1, c)
+            r.right=h(a+siz+1, b, dic[v]+1)
+            return r
+        return h()
+        

@@ -17,3 +17,5 @@
 # Array 
 - [Given an unsorted integer array nums, return the smallest missing positive integer.](https://leetcode.com/problems/first-missing-positive/)  [(code)](slideWin.py#L214)
 
+# tree
+- [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/981152/Recursion-or-Explanation-%2B-Visuals-or-Python) [(code)](slideWin.py#L280)
