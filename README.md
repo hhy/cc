@@ -17,7 +17,13 @@
 # Array 
 - [Given an unsorted integer array nums, return the smallest missing positive integer.](https://leetcode.com/problems/first-missing-positive/)  [(code)](slideWin.py#L214)
 
-# tree
+# Tree
 - [Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/981152/Recursion-or-Explanation-%2B-Visuals-or-Python) [(code)](slideWin.py#L280)
 
 - [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/) [(code)](slideWin.py#L299)
+
+- [Trie](https://leetcode.com/problems/implement-trie-prefix-tree/) [(code)](slideWin.py#L319)
+
+# Basic
+- [heapify](https://github.com/python/cpython/blob/main/Lib/heapq.py)
+
