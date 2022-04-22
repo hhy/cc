@@ -294,4 +294,24 @@ class Solution:
             r.right=h(a+siz+1, b, dic[v]+1)
             return r
         return h()
-        
+
+
+def f():
+    '''
+    Binary Tree Maximum Path Sum
+    '''
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        res=-math.inf
+        def dfs(root):
+            nonlocal res
+            if not root:
+                return 0
+            left = max(dfs(root.left), 0)
+            right = max(dfs(root.right), 0)
+
+            res = max(res, root.val + left + right)
+            return max(left, right) + root.val
+        dfs(root)
+        return res
